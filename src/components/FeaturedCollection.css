@@ -1,0 +1,135 @@
+.featured-collection {
+  padding: 120px 0;
+  background-color: var(--bg-dark);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: 48px;
+  margin-bottom: 16px;
+  color: var(--text-light);
+}
+
+.section-subtitle {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--rolex-gold);
+}
+
+.watch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+  margin-bottom: 80px;
+}
+
+.watch-card {
+  background-color: var(--bg-light);
+  border-radius: 0;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.watch-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border-color: rgba(163, 126, 44, 0.2);
+}
+
+.watch-img-container {
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #2a2a2a 0%, var(--bg-light) 100%);
+  padding: 40px;
+  position: relative;
+}
+
+.watch-img {
+  width: auto;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* If images are jpg with white bg, mix-blend-mode: multiply wouldn't work well on dark.
+     Assuming we might use pngs, or we just let it be. For now, no mix-blend-mode */
+}
+
+.watch-card:hover .watch-img {
+  transform: scale(1.08);
+}
+
+.watch-info {
+  padding: 40px;
+  text-align: center;
+}
+
+.watch-name {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: var(--text-light);
+}
+
+.watch-material {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.watch-desc {
+  color: var(--text-dark);
+  margin-bottom: 30px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.discover-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  color: var(--text-light);
+  transition: color 0.3s ease;
+}
+
+.discover-link .arrow {
+  transition: transform 0.4s ease;
+  color: var(--rolex-gold);
+}
+
+.discover-link:hover {
+  color: var(--rolex-gold);
+}
+
+.discover-link:hover .arrow {
+  transform: translateX(6px);
+}
+
+.view-all-container {
+  text-align: center;
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .watch-grid {
+    grid-template-columns: 1fr;
+  }
+  .watch-img-container {
+    height: 350px;
+  }
+}

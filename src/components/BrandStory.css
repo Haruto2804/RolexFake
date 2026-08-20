@@ -1,0 +1,105 @@
+.brand-story {
+  padding: 0;
+  background-color: var(--bg-dark); /* Ensure it's deep black */
+  color: var(--text-light);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.story-container {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 700px;
+}
+
+.story-content {
+  flex: 1;
+  min-width: 300px;
+  padding: 120px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-title {
+  color: var(--text-light);
+  font-size: 56px;
+  margin-bottom: 40px;
+  line-height: 1.1;
+}
+
+.story-text {
+  font-size: 20px;
+  color: #a0a0a0;
+  margin-bottom: 50px;
+  max-width: 500px;
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.story-content .discover-link {
+  color: var(--text-light);
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  transition: color 0.3s ease;
+}
+
+.story-content .discover-link .arrow {
+  color: var(--rolex-gold);
+  transition: transform 0.4s ease;
+}
+
+.story-content .discover-link:hover {
+  color: var(--rolex-gold);
+}
+
+.story-content .discover-link:hover .arrow {
+  transform: translateX(6px);
+}
+
+.story-image-container {
+  flex: 1;
+  min-width: 300px;
+  background-color: #051a10; /* Very dark green hint */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-image-placeholder {
+  width: 120%; /* Slightly larger for parallax */
+  height: 120%;
+  background: radial-gradient(circle at center, var(--rolex-green) 0%, #002211 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-crown.gold {
+  font-size: 240px;
+  color: var(--rolex-gold);
+  opacity: 0.15;
+  filter: drop-shadow(0 0 40px rgba(163, 126, 44, 0.4));
+}
+
+@media (max-width: 992px) {
+  .story-container {
+    flex-direction: column;
+  }
+  .story-image-container {
+    min-height: 400px;
+  }
+  .story-title {
+    font-size: 42px;
+  }
+  .story-text {
+    font-size: 18px;
+  }
+}
