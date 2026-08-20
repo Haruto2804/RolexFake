@@ -23,17 +23,18 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.3 }
+    transition: { staggerChildren: 0.4, delayChildren: 0.2 }
   }
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 60, scale: 0.95 },
+  hidden: { opacity: 0, y: 80, scale: 0.9, filter: "blur(15px)" },
   visible: { 
     opacity: 1, 
     y: 0, 
     scale: 1,
-    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } 
+    filter: "blur(0px)",
+    transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } 
   }
 };
 
@@ -43,10 +44,10 @@ const FeaturedCollection = ({ onProductClick }) => {
       <div className="container">
         <motion.div 
           className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="section-title">Rolex Watches</h2>
           <p className="section-subtitle">Experience a Rolex</p>
@@ -57,11 +58,12 @@ const FeaturedCollection = ({ onProductClick }) => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-150px" }}
         >
           {watches.map(watch => (
             <motion.div key={watch.id} className="watch-card" variants={cardVariants}>
               <div className="watch-img-container">
+                <div className="spotlight-glow"></div>
                 <img src={watch.image} alt={watch.name} className="watch-img" />
               </div>
               <div className="watch-info">
@@ -80,10 +82,10 @@ const FeaturedCollection = ({ onProductClick }) => {
         <div className="view-all-container">
           <motion.button 
             className="btn-secondary"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 1, delay: 0.8 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

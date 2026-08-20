@@ -34,14 +34,14 @@
   border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s ease;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .watch-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  border-color: rgba(163, 126, 44, 0.2);
+  transform: translateY(-15px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+  border-color: rgba(163, 126, 44, 0.3);
 }
 
 .watch-img-container {
@@ -50,33 +50,60 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle, #2a2a2a 0%, var(--bg-light) 100%);
+  background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-light) 70%);
   padding: 40px;
   position: relative;
+}
+
+.spotlight-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(163, 126, 44, 0.15) 0%, rgba(0, 96, 57, 0.05) 50%, transparent 70%);
+  filter: blur(20px);
+  z-index: 0;
+  transition: transform 1s ease, opacity 1s ease;
+  opacity: 0.5;
+}
+
+.watch-card:hover .spotlight-glow {
+  transform: translate(-50%, -50%) scale(1.2);
+  opacity: 1;
 }
 
 .watch-img {
   width: auto;
   height: 100%;
   object-fit: contain;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  /* If images are jpg with white bg, mix-blend-mode: multiply wouldn't work well on dark.
-     Assuming we might use pngs, or we just let it be. For now, no mix-blend-mode */
+  z-index: 1;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease;
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
 }
 
 .watch-card:hover .watch-img {
-  transform: scale(1.08);
+  transform: scale(1.1);
+  filter: drop-shadow(0 20px 25px rgba(0,0,0,0.8));
 }
 
 .watch-info {
   padding: 40px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .watch-name {
   font-size: 32px;
   margin-bottom: 8px;
   color: var(--text-light);
+  transition: color 0.5s ease;
+}
+
+.watch-card:hover .watch-name {
+  color: var(--rolex-gold);
 }
 
 .watch-material {
@@ -89,10 +116,11 @@
 }
 
 .watch-desc {
-  color: var(--text-dark);
+  color: #c0c0c0;
   margin-bottom: 30px;
   font-size: 16px;
   font-weight: 300;
+  line-height: 1.6;
 }
 
 .discover-link {

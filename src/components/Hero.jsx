@@ -22,8 +22,7 @@ const Hero = () => {
           muted 
           playsInline
         >
-          {/* High quality luxury watch placeholder video */}
-          <source src="https://cdn.pixabay.com/video/2021/08/11/84687-587834571_large.mp4" type="video/mp4" />
+          <source src="/videos/hero_momment.mp4" type="video/mp4" />
         </video>
         <div className="hero-overlay"></div>
       </div>

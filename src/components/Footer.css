@@ -1,31 +1,37 @@
 .footer {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-light); /* slightly lighter than black, #111 */
   color: #a0a0a0;
-  padding: 80px 0 40px;
+  padding: 100px 0 40px;
 }
 
 .footer-top {
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 80px;
   margin-bottom: 60px;
   padding-bottom: 60px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-brand .logo {
   align-items: flex-start;
   color: var(--text-light);
+  transition: transform 0.3s ease;
+}
+
+.footer-brand .logo:hover {
+  transform: scale(1.05);
 }
 
 .footer-brand .logo-text {
   font-size: 28px;
+  letter-spacing: 4px;
 }
 
 .footer-links-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
+  gap: 60px;
 }
 
 .footer-column h4 {
@@ -35,7 +41,7 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 500;
-  margin-bottom: 24px;
+  margin-bottom: 30px;
 }
 
 .footer-column ul {
@@ -43,16 +49,18 @@
 }
 
 .footer-column ul li {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .footer-column ul li a {
   font-size: 14px;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
 }
 
 .footer-column ul li a:hover {
-  color: var(--text-light);
+  color: var(--rolex-gold);
+  transform: translateX(4px);
 }
 
 .footer-bottom {
@@ -60,25 +68,32 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
 }
 
 .social-links {
   display: flex;
-  gap: 24px;
+  gap: 32px;
 }
 
 .social-links a {
   color: #a0a0a0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
 }
 
 .social-links a:hover {
-  color: var(--text-light);
+  color: var(--rolex-gold);
+  transform: translateY(-2px);
 }
 
 .copyright {
   font-size: 12px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  color: #666;
 }
 
 @media (max-width: 768px) {
