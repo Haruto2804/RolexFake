@@ -1,0 +1,88 @@
+.craftsmanship {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.craft-bg {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  z-index: 0;
+}
+
+.craft-bg-img {
+  width: 100%;
+  height: 100%;
+  background: url('/images/hero_watch_1787232652538.jpg') center/cover no-repeat;
+  filter: brightness(0.3) saturate(0.8);
+}
+
+.craft-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+  z-index: 1;
+}
+
+.craft-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.craft-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rolex-gold), transparent);
+  transform-origin: center;
+}
+
+.craft-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: var(--rolex-gold);
+}
+
+.craft-title {
+  font-family: var(--font-serif);
+  font-size: 72px;
+  font-weight: 400;
+  color: var(--text-light);
+  line-height: 1.1;
+  text-shadow: 0 4px 40px rgba(0,0,0,0.5);
+}
+
+.craft-desc {
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  max-width: 550px;
+}
+
+@media (max-width: 768px) {
+  .craft-title {
+    font-size: 42px;
+  }
+  .craft-desc {
+    font-size: 16px;
+  }
+}

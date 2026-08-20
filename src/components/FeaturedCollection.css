@@ -22,130 +22,98 @@
   color: var(--rolex-gold);
 }
 
+/* 3-column overlay grid */
 .watch-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
   margin-bottom: 80px;
 }
 
-.watch-card {
-  background-color: var(--bg-light);
-  border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  overflow: hidden;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.8s ease;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-
-.watch-card:hover {
-  transform: translateY(-15px);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-  border-color: rgba(163, 126, 44, 0.3);
-}
-
-.watch-img-container {
-  height: 400px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-light) 70%);
-  padding: 40px;
+.watch-card-overlay {
   position: relative;
+  height: 550px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.spotlight-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, rgba(163, 126, 44, 0.15) 0%, rgba(0, 96, 57, 0.05) 50%, transparent 70%);
-  filter: blur(20px);
-  z-index: 0;
-  transition: transform 1s ease, opacity 1s ease;
-  opacity: 0.5;
+.watch-card-overlay.card-large {
+  /* first card takes full height, same as others */
 }
 
-.watch-card:hover .spotlight-glow {
-  transform: translate(-50%, -50%) scale(1.2);
-  opacity: 1;
-}
-
-.watch-img {
-  width: auto;
+.card-bg-img {
+  width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
+  filter: brightness(0.75);
+}
+
+.watch-card-overlay:hover .card-bg-img {
+  transform: scale(1.08);
+  filter: brightness(0.5);
+}
+
+.card-gradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
   z-index: 1;
-  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease;
-  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+  transition: height 0.8s ease;
 }
 
-.watch-card:hover .watch-img {
-  transform: scale(1.1);
-  filter: drop-shadow(0 20px 25px rgba(0,0,0,0.8));
+.watch-card-overlay:hover .card-gradient {
+  height: 100%;
 }
 
-.watch-info {
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   padding: 40px;
-  text-align: center;
-  position: relative;
-  z-index: 1;
+  z-index: 2;
+  transform: translateY(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.watch-name {
+.watch-card-overlay:hover .card-content {
+  transform: translateY(-10px);
+}
+
+.card-label {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+}
+
+.watch-card-overlay:hover .card-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-name {
+  font-family: var(--font-serif);
   font-size: 32px;
-  margin-bottom: 8px;
+  font-weight: 400;
   color: var(--text-light);
   transition: color 0.5s ease;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
 }
 
-.watch-card:hover .watch-name {
-  color: var(--rolex-gold);
-}
-
-.watch-material {
-  font-family: var(--font-sans);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--text-muted);
-  margin-bottom: 20px;
-}
-
-.watch-desc {
-  color: #c0c0c0;
-  margin-bottom: 30px;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.6;
-}
-
-.discover-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 13px;
-  color: var(--text-light);
-  transition: color 0.3s ease;
-}
-
-.discover-link .arrow {
-  transition: transform 0.4s ease;
-  color: var(--rolex-gold);
-}
-
-.discover-link:hover {
-  color: var(--rolex-gold);
-}
-
-.discover-link:hover .arrow {
-  transform: translateX(6px);
+.watch-card-overlay:hover .card-name {
+  color: var(--rolex-gold-light);
 }
 
 .view-all-container {
@@ -153,11 +121,15 @@
   margin-top: 40px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .watch-grid {
     grid-template-columns: 1fr;
   }
-  .watch-img-container {
-    height: 350px;
+  .watch-card-overlay {
+    height: 450px;
+  }
+  .card-label {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import FeaturedCollection from './components/FeaturedCollection';
+import Craftsmanship from './components/Craftsmanship';
 import BrandStory from './components/BrandStory';
+import Newsletter from './components/Newsletter';
 import Footer from './components/Footer';
 import ProductDetail from './components/ProductDetail';
 import LoadingScreen from './components/LoadingScreen';
@@ -32,7 +34,9 @@ function App() {
           <>
             <Hero />
             <FeaturedCollection onProductClick={navigateToProduct} />
+            <Craftsmanship />
             <BrandStory />
+            <Newsletter />
           </>
         ) : (
           <ProductDetail onBack={navigateToHome} />
@@ -44,4 +48,5 @@ function App() {
 }
 
 export default App;
+
 
