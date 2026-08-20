@@ -6,16 +6,20 @@ const watches = [
   {
     id: 1,
     name: 'Submariner',
-    description: 'The reference among divers\' watches.',
+    label: 'Oyster Perpetual',
     image: '/images/diver_watch_1787232710872.jpg',
-    material: 'Oystersteel',
   },
   {
     id: 2,
     name: 'Datejust',
-    description: 'The classic watch of reference.',
+    label: 'The Classic',
     image: '/images/dress_watch_1787232727199.jpg',
-    material: 'Yellow gold',
+  },
+  {
+    id: 3,
+    name: 'Craftsmanship',
+    label: 'A commitment to excellence',
+    image: '/images/hero_watch_1787232652538.jpg',
   }
 ];
 
@@ -23,18 +27,17 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.4, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.25, delayChildren: 0.1 }
   }
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 80, scale: 0.9, filter: "blur(15px)" },
+  hidden: { opacity: 0, y: 60, scale: 0.96 },
   visible: { 
     opacity: 1, 
     y: 0, 
     scale: 1,
-    filter: "blur(0px)",
-    transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } 
+    transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } 
   }
 };
 
@@ -58,22 +61,20 @@ const FeaturedCollection = ({ onProductClick }) => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-150px" }}
+          viewport={{ once: true, margin: "-100px" }}
         >
-          {watches.map(watch => (
-            <motion.div key={watch.id} className="watch-card" variants={cardVariants}>
-              <div className="watch-img-container">
-                <div className="spotlight-glow"></div>
-                <img src={watch.image} alt={watch.name} className="watch-img" />
-              </div>
-              <div className="watch-info">
-                <h3 className="watch-name">{watch.name}</h3>
-                <p className="watch-material">{watch.material}</p>
-                <p className="watch-desc">{watch.description}</p>
-                <button onClick={() => onProductClick(watch.id)} className="discover-link" style={{background: 'none', border: 'none', cursor: 'pointer', padding: 0}}>
-                  Discover more
-                  <span className="arrow">→</span>
-                </button>
+          {watches.map((watch, i) => (
+            <motion.div 
+              key={watch.id} 
+              className={`watch-card-overlay ${i === 0 ? 'card-large' : ''}`}
+              variants={cardVariants}
+              onClick={() => i < 2 && onProductClick(watch.id)}
+            >
+              <img src={watch.image} alt={watch.name} className="card-bg-img" />
+              <div className="card-gradient"></div>
+              <div className="card-content">
+                <span className="card-label">{watch.label}</span>
+                <h3 className="card-name">{watch.name}</h3>
               </div>
             </motion.div>
           ))}
@@ -85,7 +86,7 @@ const FeaturedCollection = ({ onProductClick }) => {
             initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.8 }}
+            transition={{ duration: 1, delay: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -98,3 +99,4 @@ const FeaturedCollection = ({ onProductClick }) => {
 };
 
 export default FeaturedCollection;
+

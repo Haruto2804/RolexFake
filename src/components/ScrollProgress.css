@@ -1,0 +1,10 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rolex-green), var(--rolex-gold), var(--rolex-gold-light));
+  transform-origin: 0%;
+  z-index: 10000;
+}

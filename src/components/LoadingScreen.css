@@ -1,0 +1,51 @@
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.loading-crown-wrap {
+  perspective: 600px;
+}
+
+.loading-crown {
+  font-size: 80px;
+  color: var(--rolex-gold);
+  display: block;
+  filter: drop-shadow(0 0 30px rgba(163, 126, 44, 0.5));
+  animation: crownPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes crownPulse {
+  0% { filter: drop-shadow(0 0 20px rgba(163, 126, 44, 0.3)); }
+  100% { filter: drop-shadow(0 0 50px rgba(163, 126, 44, 0.7)); }
+}
+
+.loading-brand {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--text-light);
+  display: block;
+}
+
+.loading-line {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rolex-gold), transparent);
+  transform-origin: center;
+}
