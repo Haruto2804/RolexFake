@@ -1,44 +1,45 @@
 .featured-collection {
-  padding: 120px 0;
+  padding: 60px 20px;
   background-color: var(--bg-dark);
 }
 
 .section-header {
-  text-align: center;
-  margin-bottom: 80px;
+  text-align: left;
+  margin-bottom: 40px;
+  padding-left: 10px;
 }
 
 .section-title {
-  font-size: 48px;
-  margin-bottom: 16px;
+  font-family: var(--font-serif);
+  font-size: 32px;
+  margin-bottom: 8px;
   color: var(--text-light);
+  font-weight: 500;
 }
 
 .section-subtitle {
   font-family: var(--font-sans);
   font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 4px;
-  color: var(--rolex-gold);
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 /* 3-column overlay grid */
 .watch-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 80px;
+  gap: 16px;
+  margin-bottom: 60px;
 }
 
 .watch-card-overlay {
   position: relative;
-  height: 550px;
+  height: 600px; /* Tall cards like the screenshot */
+  border-radius: 12px; /* Rounded corners like the screenshot */
   overflow: hidden;
   cursor: pointer;
-}
-
-.watch-card-overlay.card-large {
-  /* first card takes full height, same as others */
+  background-color: #1a1a1a;
 }
 
 .card-bg-img {
@@ -47,12 +48,11 @@
   object-fit: cover;
   object-position: center;
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), filter 1.2s ease;
-  filter: brightness(0.75);
+  filter: brightness(0.9);
 }
 
 .watch-card-overlay:hover .card-bg-img {
-  transform: scale(1.08);
-  filter: brightness(0.5);
+  transform: scale(1.05);
 }
 
 .card-gradient {
@@ -60,14 +60,10 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 60%;
+  height: 50%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
   z-index: 1;
   transition: height 0.8s ease;
-}
-
-.watch-card-overlay:hover .card-gradient {
-  height: 100%;
 }
 
 .card-content {
@@ -75,45 +71,29 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 40px;
+  padding: 40px 20px;
   z-index: 2;
-  transform: translateY(0);
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.watch-card-overlay:hover .card-content {
-  transform: translateY(-10px);
+  text-align: center;
 }
 
 .card-label {
   display: block;
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 3px;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 10px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
-}
-
-.watch-card-overlay:hover .card-label {
-  opacity: 1;
-  transform: translateY(0);
+  letter-spacing: 2px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 8px;
 }
 
 .card-name {
-  font-family: var(--font-serif);
-  font-size: 32px;
-  font-weight: 400;
+  font-family: var(--font-sans);
+  font-size: 36px;
+  font-weight: 700; /* Bold sans-serif like the screenshot */
   color: var(--text-light);
-  transition: color 0.5s ease;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-}
-
-.watch-card-overlay:hover .card-name {
-  color: var(--rolex-gold-light);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
 }
 
 .view-all-container {
@@ -126,10 +106,7 @@
     grid-template-columns: 1fr;
   }
   .watch-card-overlay {
-    height: 450px;
-  }
-  .card-label {
-    opacity: 1;
-    transform: translateY(0);
+    height: 500px;
   }
 }
+
